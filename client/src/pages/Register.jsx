@@ -5,14 +5,16 @@ import { registerRequest } from "../api/auth";
 function RegisterPage() {
 
     const { register ,handleSubmit} = useForm();
+
+    const onSubmit= handleSubmit(async (values) =>{
+        console.log(values)
+        const res= await registerRequest(values)
+        console.log(res);
+    })
     return (
         <div className="bg-zinc-800 max-w-md p-10 rounded-md my-2">
             <form 
-            onSubmit={handleSubmit(async (values) =>{
-                console.log(values)
-                const res= await registerRequest(values)
-                console.log(res);
-            })}>
+            onSubmit={onSubmit}>
                 <input type="text" 
                 {...register("username", { required: true })}
                 className="text-blue"
