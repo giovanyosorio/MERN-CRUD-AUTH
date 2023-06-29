@@ -3,9 +3,12 @@ import {BrowserRouter,Routes,Route} from "react-router-dom"
 import RegisterPage from "./pages/Register";
 import LoginPage from "./pages/Login";
 
+import { AuthProvider } from "./context/AuthContext";
+
 function App() {
   return (
-    <BrowserRouter>
+    <AuthProvider>
+          <BrowserRouter>
       <Routes>
         <Route path="/" element={<h1>Home</h1>} />
         <Route path="/login" element= {<LoginPage/>} />
@@ -17,6 +20,7 @@ function App() {
 
       </Routes>
     </BrowserRouter>
+    </AuthProvider>
   );
 }
 
